@@ -3,6 +3,7 @@ package com.example.tut
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import com.example.tut.databinding.ActivityMainBinding
 import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         // Inflate layout
         Binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(Binding.root)
+        setContentView(R.layout.activity_landing)
 
         // Initialize Firebase Database
         database = FirebaseDatabase.getInstance("https://voltagereadings-default-rtdb.europe-west1.firebasedatabase.app").getReference()
@@ -40,5 +41,9 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Firebase", "Data fetching cancelled: ${error.message}")
             }
         })
+        val myBtn=findViewById<Button>(R.id.btnToReadings)
+        myBtn.setOnClickListener {
+            setContentView(R.layout.activity_main)
+        }
     }
 }

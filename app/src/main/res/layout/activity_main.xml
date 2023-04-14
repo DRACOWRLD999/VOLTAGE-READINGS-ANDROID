@@ -6,29 +6,48 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
+    android:background="#252526"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btnShow"
+
+    <TextView
+        android:id="@+id/tvDummyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="show it"
+        android:text="YOUR READING IS:"
+        android:fontFamily="monospace"
+        android:textSize="30sp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.438" />
 
     <TextView
         android:id="@+id/voltage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
         android:text=""
+        android:fontFamily="monospace"
+        android:textSize="50sp"
+        android:textColor="#225C6E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnShow" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDummyText"
+        app:layout_constraintVertical_bias="0.105" />
 
+    <TextView
+        android:id="@+id/tvUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VOLTS"
+        android:fontFamily="monospace"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/voltage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/voltage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
