@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "291509388942",
+    "firebase_url": "https://voltagereadings-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "voltagereadings",
+    "storage_bucket": "voltagereadings.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291509388942:android:c24dddc1f2b52c96296bdf",
+        "android_client_info": {
+          "package_name": "com.example.tut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291509388942-9jae7hnaa6jp4mbf4fccro49fuv6m6ab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_mKfmBzFyRfkHjFIwHJb5W7lF8jrENbU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291509388942-9jae7hnaa6jp4mbf4fccro49fuv6m6ab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
