@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">VOLTAGE READINGS</string>
+    <string name="your_realtime_reading_is">YOUR REALTIME READING IS:</string>
+    <string name="init_val_voltage">0</string>
+    <string name="volts_keyword">VOLTS</string>
+    <string name="your_max_and_min_voltages"><![CDATA[YOUR MAX & MIN VOLTAGES:]]></string>
+    <string name="volts_vertically">V\nO\nL\nT\nS</string>
+    <string name="max_keyword">MAX</string>
+    <string name="min_keyword">MIN</string>
+    <string name="show_graph">SHOW GRAPH</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="back_to_readings">BACK TO READINGS</string>
 </resources>

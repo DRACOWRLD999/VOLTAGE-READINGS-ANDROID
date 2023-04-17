@@ -4,50 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:background="#252525"
-    tools:context=".MainActivity">
-
+    android:background="#252525">
 
     <TextView
-        android:id="@+id/tvDummyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="YOUR READING IS:"
         android:fontFamily="monospace"
-        android:textSize="30sp"
+        android:text="PRESS THE BUTTON"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnToReadings"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.438" />
+        app:layout_constraintVertical_bias="0.841" />
+
+    <Button
+        android:id="@+id/btnToReadings"
+        android:layout_width="160dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="monospace"
+        android:foreground="@drawable/btn_ripple"
+        android:text="READINGS"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
-        android:id="@+id/voltage"
+        android:id="@+id/tvDummyText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:fontFamily="monospace"
-        android:textSize="50sp"
-        android:textColor="#225C6E"
+        android:lines="5"
+        android:text="A COMMUNICATION\n CALSS PROJECT\n BY\nAHMED SABAH SABRI\nALI AHMED HADI"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="@color/greyishWhite"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDummyText"
-        app:layout_constraintVertical_bias="0.105" />
-
-    <TextView
-        android:id="@+id/tvUnits"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="VOLTS"
-        android:fontFamily="monospace"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/voltage"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/voltage" />
+        app:layout_constraintTop_toBottomOf="@+id/btnToReadings"
+        app:layout_constraintVertical_bias="0.27" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

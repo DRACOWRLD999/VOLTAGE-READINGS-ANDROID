@@ -1,18 +1,13 @@
 package com.example.tut
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.TextView
 import com.example.tut.databinding.ActivityMainBinding
 import com.google.firebase.FirebaseApp
-import com.google.firebase.database.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var Binding: ActivityMainBinding
-    private var database: DatabaseReference? = null
-    var data: String? = null
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,41 +15,29 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this)
 
         // Inflate layout
-        Binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(R.layout.activity_landing)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        // Initialize Firebase Database query
-        val query = FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/")
-            .reference
-            .child("all")
-            .orderByKey()
-            .limitToLast(1)
-
-        query.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists() && snapshot.value != null) {
-                    val lastChildSnapshot = snapshot.children.lastOrNull()
-                    if (lastChildSnapshot != null) {
-                        val data = lastChildSnapshot.value.toString()
-                        if (!data.isNullOrEmpty()) {
-                            Log.d("Firebase", "Data received: $data")
-                            Binding.voltage.text = data.substringAfter('=')
-                        }
+        binding.btnToReadings.setOnClickListener { it ->
+            it.animate().apply {
+                duration = 100
+                scaleX(0.95f)
+                scaleY(0.95f)
+                withEndAction {
+                    it.animate().apply {
+                        duration = 100
+                        scaleX(1f)
+                        scaleY(1f)
+                        start()
+                    }
+                    Intent( this@MainActivity , MainActivity2::class.java).also {
+                        startActivity(it)
                     }
                 }
+                start()
             }
-
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("Firebase", "Error fetching data from Firebase: ${error.message}")
-            }
-        })
-
-
-
-    val myBtn=findViewById<Button>(R.id.btnToReadings)
-        myBtn.setOnClickListener {
-            setContentView(Binding.root)
-            print(data)
         }
+
+
     }
 }
