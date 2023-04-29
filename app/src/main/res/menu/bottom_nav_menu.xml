@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/miReadings"
+        android:icon="@drawable/gauge"
+        android:title="Readings" />
+    <item
+        android:id="@+id/miGraph"
+        android:icon="@drawable/wave"
+        android:title="Graph" />
+    <item
+        android:id="@+id/miAbout"
+        android:icon="@drawable/quote"
+        android:title="About Us" />
+</menu>
