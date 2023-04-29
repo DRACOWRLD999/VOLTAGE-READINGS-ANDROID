@@ -13,5 +13,5 @@
     <item
         android:id="@+id/miAbout"
         android:icon="@drawable/quote"
-        android:title="About Us" />
+        android:title="About" />
 </menu>

@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#29ff22</color>
-    <color name="lightBlue">#225C6E</color>
-    <color name="greyishWhite">#D6D5CB</color>
+    <color name="myColor">#225C6E</color>
+    <color name="greyishWhite">#aaaaaa</color>
+    <color name="yellow">#e6e600</color>
 </resources>

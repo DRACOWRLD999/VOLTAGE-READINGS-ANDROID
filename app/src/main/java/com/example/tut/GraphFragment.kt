@@ -1,30 +1,56 @@
 package com.example.tut
 
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.tut.databinding.GraphFragmentBinding
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.*
 import com.google.firebase.database.*
 
-class MainGraph : AppCompatActivity() {
+class GraphFragment : Fragment(R.layout.graph_fragment) {
     private lateinit var chart: LineChart
     private lateinit var binding: GraphFragmentBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = GraphFragmentBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = GraphFragmentBinding.inflate(inflater, container, false)
         chart = binding.lineChart
-        chart.animateX(2500) // set animation duration to 2 seconds
+        chart.animateX(2500)
+        // rest of the code
+        return binding.root
+    }
 
-        val databaseReference =
-            FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/").reference.child(
-                "all"
-            )
+    private fun setUpChart(entries: ArrayList<Entry>) {
+        val lineColor =  Color.parseColor("#e6e600")
+        val dataSet = LineDataSet(entries, "MEASUREMENTS")
+        dataSet.color = lineColor
+        // Set up the X axis
+        val xAxis = chart.xAxis
+        xAxis.granularity = 1f // show grid line every 1 unit on x axis
+        xAxis.gridColor = Color.parseColor("#aaaaaa") // set grid line color
+
+// Set up the Y axis
+        val yAxis = chart.axisLeft
+        yAxis.granularity = 1f // show grid line every 1 unit on y axis
+        yAxis.gridColor = Color.parseColor("#cccccc") // set grid line color
+
+        dataSet.setCircleColor(Color.parseColor("#e6e600"))
+        dataSet.valueTextColor = R.color.myColor
+        dataSet.valueTextColor = Color.WHITE
+        chart.description.text = "VOLTAGE GRAPH"
+        val lineData = LineData(dataSet)
+        chart.data = lineData
+        chart.invalidate()
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val databaseReference = FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/").reference.child("voltage")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val entries = ArrayList<Entry>()
@@ -34,16 +60,8 @@ class MainGraph : AppCompatActivity() {
                         entries.add(Entry(entries.size.toFloat(), it.toDouble().toFloat()))
                     }
                 }
-
-                val dataSet = LineDataSet(entries, "Graph")
-                dataSet.valueTextColor = Color.parseColor("#225C6E")
-                dataSet.valueTextColor = Color.BLACK
-                chart.description.text="VOLTAGE GRAPH"
-                val lineData = LineData(dataSet)
-                chart.data = lineData
-                chart.invalidate()
+                setUpChart(entries)
             }
-
 
             override fun onCancelled(databaseError: DatabaseError) {
                 Log.d("Firebase", "Error: ${databaseError.message}")

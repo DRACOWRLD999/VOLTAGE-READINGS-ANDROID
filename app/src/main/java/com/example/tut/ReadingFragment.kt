@@ -1,36 +1,45 @@
 package com.example.tut
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.tut.databinding.ReadingFragmentBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlin.math.round
 
-class MainActivity2 : AppCompatActivity() {
+class ReadingFragment : Fragment() {
     private lateinit var binding: ReadingFragmentBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ReadingFragmentBinding.inflate(layoutInflater)
 
-        setContentView(binding.root)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ReadingFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         val databaseRef =
             FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/")
-                .reference.child("all")
+                .reference.child("voltage")
 
         databaseRef.orderByValue().addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val minChildren = mutableListOf<String>()
-                for (chilSnapshot in snapshot.children) {
-                    val value = chilSnapshot.getValue(String::class.java)
-                    if (value != null) minChildren.add(value)
-                }
-                val smallestValue =
-                    minChildren.minByOrNull { it.toDoubleOrNull() ?: Double.POSITIVE_INFINITY }
-                binding.minVoltage.text = smallestValue.toString()
+                for (childSnapshot in snapshot.children) {
+                    val value = childSnapshot.getValue(String::class.java)
+                    if (value != null) minChildren.add(value) }
+                val smallestValue = minChildren.minByOrNull { it.toDoubleOrNull() ?: Double.POSITIVE_INFINITY }
+                val roundedValue = smallestValue?.toDouble()?.let {round(it * 100) / 100 }
+                binding.minVoltage.text = roundedValue?.toString() ?: ""
+
 
                 Log.d("maxMin", " getting min value: $smallestValue")
 
@@ -48,9 +57,10 @@ class MainActivity2 : AppCompatActivity() {
                     val value = childSnapshot.getValue(String::class.java)
                     if (value != null) maxChildren.add(value)
                 }
-                val biggestValue =
-                    maxChildren.maxByOrNull { it.toDoubleOrNull() ?: Double.NEGATIVE_INFINITY }
-                binding.maxVoltage.text = biggestValue.toString()
+                val biggestValue = maxChildren.maxByOrNull { it.toDoubleOrNull() ?: Double.NEGATIVE_INFINITY }
+                val roundedValue = biggestValue?.toDouble()?.let {round(it * 100) / 100 }
+                binding.maxVoltage.text = roundedValue?.toString() ?: ""
+
 
                 Log.d("maxMin", " getting max value :$biggestValue")
 
@@ -60,12 +70,12 @@ class MainActivity2 : AppCompatActivity() {
                 Log.e("maxMin", "error getting max value")
             }
         })
-        val allQuery =
+        val myVoltagesRef =
             FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/").reference.child(
-                "all"
+                "voltage"
             ).orderByKey().limitToLast(1)
 
-        allQuery.addValueEventListener(object : ValueEventListener {
+        myVoltagesRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val lastChildSnapshot = snapshot.children.last()
                 val data = lastChildSnapshot?.value.toString()
@@ -77,6 +87,49 @@ class MainActivity2 : AppCompatActivity() {
                 Log.d("Firebase", "Error fetching data from Firebase: ${error.message}")
             }
         })
+        val myCurrentRef =
+            FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/").reference.child(
+                "current"
+            ).orderByKey().limitToLast(1)
 
+        myCurrentRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lastChildSnapshot = snapshot.children.last()
+                val currentData = lastChildSnapshot?.value?.toString()?.toDoubleOrNull() ?: 0.0
+                val currentDataMultiplied =currentData*1000
+                val currentRounded= round(currentDataMultiplied*10000)/10000
+                binding.tvAmps.text = currentRounded.toString()
+
+                Log.d("Firebase", "Data received: $currentData")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("Firebase", "Error fetching data from Firebase: ${error.message}")
+            }
+        })
+        val myTimeRef =
+            FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/").reference.child(
+                "time"
+            ).orderByKey().limitToLast(1)
+
+        myTimeRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lastChildSnapshot = snapshot.children.last()
+                val timeData = lastChildSnapshot?.value.toString()
+                Log.d("Firebase", "Data received: $timeData")
+                binding.tvTime.text = timeData
+                val freq=1/timeData.toDouble()
+                if (freq>1000){
+                    binding.freqUnit.setText(R.string.khz)
+                    val freqKhz=freq/1000
+                    binding.tvFreq.text=freqKhz.toString()
+                }
+                else binding.tvFreq.text=freq.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("Firebase", "Error fetching data from Firebase: ${error.message}")
+            }
+        })
     }
 }
