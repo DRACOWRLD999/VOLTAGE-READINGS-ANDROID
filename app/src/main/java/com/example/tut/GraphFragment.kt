@@ -60,7 +60,7 @@ class GraphFragment : Fragment(R.layout.graph_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val databaseReference = FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/").reference.child("voltage")
+        val databaseReference = FirebaseDatabase.getInstance("YOUR_FIREBASE_URL").reference.child("YOUR_FIREBASE_CHILD")
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val entries = ArrayList<Entry>()
