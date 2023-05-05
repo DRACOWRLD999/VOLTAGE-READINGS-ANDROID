@@ -150,7 +150,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvLastVoltage"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/black"
+                android:paddingVertical="10dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/latest_voltage"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/tvLastVoltage"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.40"
+                        android:gravity="center"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:text="@string/initial_val"
+                        android:textColor="@color/yellow"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/tvVoltsUnit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/volts_vertically"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="15dp"
+                        tools:ignore="SpUsage" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cvAmps"
                 android:layout_width="match_parent"
@@ -172,7 +219,7 @@
                         android:gravity="center"
                         android:text="@string/current"
                         android:textColor="@color/greyishWhite"
-                        android:textSize="25sp" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/tvAmps"
@@ -199,52 +246,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvRes"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/black"
-                android:paddingVertical="10dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="0.6"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:gravity="center"
-                        android:text="@string/resistance"
-                        android:textColor="@color/greyishWhite"
-                        android:textSize="25sp" />
-
-                    <TextView
-                        android:id="@+id/tvRes"
-                        android:layout_width="0dp"
-                        android:layout_height="120dp"
-                        android:layout_weight="0.40"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:gravity="center"
-                        android:text="@string/_23"
-                        android:textColor="@color/yellow"
-                        android:textSize="30sp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.1"
-                        android:fontFamily="@font/raleway_semibold"
-                        android:gravity="center"
-                        android:text="@string/resKeyword"
-                        android:textColor="@color/greyishWhite"
-                        android:textSize="25sp"
-                        tools:ignore="SpUsage" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.card.MaterialCardView
@@ -343,6 +345,52 @@
                         tools:ignore="SpUsage" />
                 </LinearLayout>
 
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvRes"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/black"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/resistance"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/tvRes"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.40"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/resString"
+                        android:textColor="@color/yellow"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/resKeyword"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="25sp"
+                        tools:ignore="SpUsage" />
+                </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
     </ScrollView>

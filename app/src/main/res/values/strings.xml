@@ -17,10 +17,11 @@
     <string name="milliSec">M.\nS\nE\nC</string>
     <string name="hz">H\nz</string>
     <string name="khz">K\nH\nz</string>
-    <string name="current">CURRENT :</string>
+    <string name="current">LATEST CURRENT :</string>
     <string name="resistance">RESISTANCE :</string>
     <string name="time">TIME :</string>
     <string name="frequency">FREQUENCY :</string>
     <string name="other_electric_measurements">OTHER ELECTRIC MEASUREMENTS:</string>
-    <string name="_23">23</string>
+    <string name="resString">10.22</string>
+    <string name="latest_voltage">LATEST VOLTAGE :</string>
 </resources>

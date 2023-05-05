@@ -22,5 +22,5 @@
     <string name="time">TIME :</string>
     <string name="frequency">FREQUENCY :</string>
     <string name="other_electric_measurements">OTHER ELECTRIC MEASUREMENTS:</string>
-    <string name="_23">23</string>
+    <string name="resString">23</string>
 </resources>

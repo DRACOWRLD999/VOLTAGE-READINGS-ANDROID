@@ -1,6 +1,8 @@
 package com.example.tut
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -75,23 +77,39 @@ class ReadingFragment : Fragment() {
                 "voltage"
             ).orderByKey().limitToLast(1)
 
+        var lastDataTime: Long = 0
+        val TIMEOUT_MS = 5000 // 5 seconds
+
         myVoltagesRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val lastChildSnapshot = snapshot.children.last()
                 val data = lastChildSnapshot?.value.toString()
                 Log.d("Firebase", "Data received: $data")
                 binding.voltage.text = data
+                lastDataTime = System.currentTimeMillis()
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Log.d("Firebase", "Error fetching data from Firebase: ${error.message}")
             }
         })
-        val myCurrentRef =
+
+        val handler = Handler(Looper.getMainLooper())
+        val runnable = object : Runnable {
+            override fun run() {
+                val currentTime = System.currentTimeMillis()
+                if (currentTime - lastDataTime >= TIMEOUT_MS) {
+                    binding.voltage.text = "0"
+                }
+                handler.postDelayed(this, TIMEOUT_MS.toLong())
+            }
+        }
+        handler.postDelayed(runnable, TIMEOUT_MS.toLong())
+
+        val myCurrentRef=
             FirebaseDatabase.getInstance("https://voltageread-22aa9-default-rtdb.firebaseio.com/").reference.child(
                 "current"
             ).orderByKey().limitToLast(1)
-
         myCurrentRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val lastChildSnapshot = snapshot.children.last()
@@ -118,13 +136,29 @@ class ReadingFragment : Fragment() {
                 val timeData = lastChildSnapshot?.value.toString()
                 Log.d("Firebase", "Data received: $timeData")
                 binding.tvTime.text = timeData
-                val freq=1/timeData.toDouble()
-                if (freq>1000){
+                val freq=1000/timeData.toDouble()
+                if (timeData.toDouble()==0.0){
+                    binding.tvFreq.text="DC"
+//                    binding.tvFreq.textSize= 15F
+                }
+                else if (freq>1000){
                     binding.freqUnit.setText(R.string.khz)
                     val freqKhz=freq/1000
                     binding.tvFreq.text=freqKhz.toString()
                 }
                 else binding.tvFreq.text=freq.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("Firebase", "Error fetching data from Firebase: ${error.message}")
+            }
+        })
+        myVoltagesRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val lastChildSnapshot = snapshot.children.last()
+                val data = lastChildSnapshot?.value.toString()
+                Log.d("Firebase", "Data received: $data")
+                binding.tvLastVoltage.text = data
             }
 
             override fun onCancelled(error: DatabaseError) {
