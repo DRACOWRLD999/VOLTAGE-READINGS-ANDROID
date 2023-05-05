@@ -21,6 +21,8 @@ FirebaseData firebaseData;
 
 float num;
 float out;
+float result;
+unsigned long timeRead;
 
 void setup() {
 
@@ -45,23 +47,36 @@ void loop() {
   num = analogRead(analogDataRead);
 
   // convert input to voltage
-  out = (0.53 / 1023.0) * num;
+  out = (1.0001 / 1023.0) * (num - 4);
+
+  result = voltageOut(out);
 
   // print output
   Serial.println(num);
-  Serial.println(out);
+  Serial.println(result);
 
-  delay(500);
   // push num to node "/voltage"
-  Firebase.pushString(firebaseData, "/voltage", out);
+  Firebase.pushString(firebaseData, "/voltage", result);
 
   // current psuh to firebase node "/current"
-  Firebase.pushString(firebaseData, "/current", Current(out));
+  Firebase.pushString(firebaseData, "/current", Current(result));
 
-  delay(500);
+  Time();
+
+  delay(1000);
 }
 
 
 float Current(float voltage) {
-  return voltage / 23000;
+  return voltage / 10220;
+}
+
+float voltageOut(float v){
+  return (v * 10220) / 220;
+}
+
+void Time() {
+  timeRead = pulseIn(analogDataRead, HIGH);
+  // push timeRead
+  Firebase.pushString(firebaseData, "/time", timeRead);
 }
