@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="5dp">
+
+    <TextView
+        android:id="@+id/tvDummyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/your_realtime_reading_is"
+        android:textColor="@color/greyishWhite"
+        android:textSize="23sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvMaxMinDummyText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <TextView
+        android:id="@+id/voltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/initial_val"
+        android:textColor="@color/yellow"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/tvMaxMinDummyText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDummyText"
+        app:layout_constraintVertical_bias="0.318"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvUnits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/volts_keyword"
+        android:textColor="@color/greyishWhite"
+        app:layout_constraintBottom_toTopOf="@+id/tvMaxMinDummyText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/voltage"
+        app:layout_constraintTop_toBottomOf="@+id/tvDummyText" />
+
+    <TextView
+        android:id="@+id/tvMaxMinDummyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="156dp"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/your_max_and_min_voltages"
+        android:textColor="@color/greyishWhite"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMinKeyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/min_keyword"
+        android:textColor="@color/greyishWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVoltsKeyword"
+        app:layout_constraintEnd_toStartOf="@+id/minVoltage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/minVoltage" />
+
+    <TextView
+        android:id="@+id/tvMaxKeyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/max_keyword"
+        android:textColor="@color/greyishWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVoltsKeyword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/maxVoltage"
+        app:layout_constraintTop_toTopOf="@+id/maxVoltage" />
+
+    <TextView
+        android:id="@+id/maxVoltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/initial_val"
+        android:textColor="@color/yellow"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVoltsKeyword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tvVoltsKeyword"
+        app:layout_constraintTop_toTopOf="@+id/tvVoltsKeyword"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/minVoltage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_semibold"
+        android:text="@string/initial_val"
+        android:textColor="@color/yellow"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvVoltsKeyword"
+        app:layout_constraintEnd_toStartOf="@+id/tvVoltsKeyword"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvVoltsKeyword"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tvVoltsKeyword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/raleway_black"
+        android:lines="5"
+        android:textSize="10sp"
+        android:text="@string/volts_vertically"
+        android:textColor="@color/greyishWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/maxVoltage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/minVoltage"
+        app:layout_constraintTop_toBottomOf="@+id/tvMaxMinDummyText"
+        app:layout_constraintVertical_bias="0.025"
+        tools:ignore="SmallSp" />
+
+    <ScrollView
+        android:id="@+id/svReading"
+        android:layout_width="match_parent"
+        android:layout_height="375dp"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMinKeyword"
+        app:layout_constraintVertical_bias="0.715"
+        tools:layout_editor_absoluteX="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvAmps"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/black"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/current"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/tvAmps"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.40"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/initial_val"
+                        android:textColor="@color/yellow"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/ampsKeyword"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="15dp"
+                        tools:ignore="SpUsage,TextSizeCheck" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvRes"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/black"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/resistance"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/tvRes"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.40"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/_23"
+                        android:textColor="@color/yellow"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/resKeyword"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="25sp"
+                        tools:ignore="SpUsage" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvTime"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/black"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/time"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/tvTime"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.40"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/initial_val"
+                        android:textColor="@color/yellow"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/milliSec"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="15dp"
+                        tools:ignore="SpUsage,TextSizeCheck" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cvFreq"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/black"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.6"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/frequency"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/tvFreq"
+                        android:layout_width="0dp"
+                        android:layout_height="120dp"
+                        android:layout_weight="0.40"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/initial_val"
+                        android:textColor="@color/yellow"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/freqUnit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/raleway_semibold"
+                        android:gravity="center"
+                        android:text="@string/hz"
+                        android:textColor="@color/greyishWhite"
+                        android:textSize="15dp"
+                        tools:ignore="SpUsage" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/raleway_semibold"
+        android:paddingVertical="10dp"
+        android:text="@string/other_electric_measurements"
+        android:textSize="20sp"
+        android:textColor="@color/greyishWhite"
+        app:layout_constraintBottom_toTopOf="@+id/svReading"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVoltsKeyword"
+        app:layout_constraintVertical_bias="0.532" />
+</androidx.constraintlayout.widget.ConstraintLayout>

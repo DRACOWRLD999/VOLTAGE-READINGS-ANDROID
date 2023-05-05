@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">VOLTAGE READINGS</string>
+    <string name="your_realtime_reading_is">YOUR REALTIME READING IS:</string>
+    <string name="initial_val">0</string>
+    <string name="volts_keyword">VOLTS</string>
+    <string name="your_max_and_min_voltages"><![CDATA[YOUR MAX & MIN VOLTAGES:]]></string>
+    <string name="volts_vertically">V\nO\nL\nT\nS</string>
+    <string name="max_keyword">MAX</string>
+    <string name="min_keyword">MIN</string>
+    <string name="show_graph">SHOW GRAPH</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="back_to_readings">BACK TO READINGS</string>
+    <string name="scrollable_voltages">Scrollable voltages</string>
+    <string name="a_communications_ncalss_roject">\n\n\n\nA COMMUNICATIONS\nCLASS PROJECT\nBY\n\n<big><font color="#e6e600">AHMED SABAH SABRI\nALI AHMED HADI</font></big>\n\nUSING A\nMICROCONTROLLER TO MEASURE\nVOLTAGES OF ELECTRIC CIRCUITS\nWITH OTHER\nELECTRIC BASIC MEASUREMENTS\nAND SENDING IT TO\nA REALTIME DATABASE\nTHEN FETCH ALL DATA\nAND REVIEW IT FROM \nTHE SMARTPHONE APP\nIN THE READINGS TAB\nTHEN USING ALL THE\nSAVED DATA FROM\nTHE DATA BASE TO PLOT A GRAPH FOR A PREVIEW\nOF ALL TIME\nMEASUREMENTS</string>
+    <string name="ampsKeyword">A\nM\nP\nS</string>
+    <string name="resKeyword">KΩ</string>
+    <string name="milliSec">M.\nS\nE\nC</string>
+    <string name="hz">H\nz</string>
+    <string name="khz">K\nH\nz</string>
+    <string name="current">CURRENT :</string>
+    <string name="resistance">RESISTANCE :</string>
+    <string name="time">TIME :</string>
+    <string name="frequency">FREQUENCY :</string>
+    <string name="other_electric_measurements">OTHER ELECTRIC MEASUREMENTS:</string>
+    <string name="_23">23</string>
+</resources>
